@@ -24,7 +24,7 @@ const Hamster = props => {
 };
 
 Hamster.propTypes = {
-  props: PropTypes.shape({ id: PropTypes.number })
+  props: PropTypes.shape({ id: PropTypes.number.isRequired })
 };
 
 export default Hamster;

@@ -4,29 +4,31 @@ import Hamster from "./Hamster";
 import HamsterContext from "../HamsterContext";
 
 const Shelf = props => {
+  const _getHamstersMarkup = hamsters => {
+    return hamsters
+      .filter(hamster => hamster.shelfId === props.id)
+      .map(hamster => <Hamster key={hamster.id} id={hamster.id} />);
+  };
   return (
     <HamsterContext.Consumer>
-      {({ changeCurrentHamsterState, hamsters }) => (
-        <div
-          key={props.id}
-          onDragOver={e => e.preventDefault()}
-          onDrop={() => changeCurrentHamsterState(props.id)}
-        >
-          {hamsters
-            .filter(hamster => hamster.shelfId === props.id)
-            .map(hamster => (
-              <Hamster key={hamster.id} id={hamster.id} />
-            ))}
-        </div>
-      )}
+      {({ changeCurrentHamsterState, hamsters }) => {
+        return (
+          <div
+            key={props.id}
+            onDragOver={e => e.preventDefault()}
+            onDrop={() => changeCurrentHamsterState(props.id)}
+          >
+            <div>{_getHamstersMarkup(hamsters)}</div>
+            <div className="rack__door" />
+          </div>
+        );
+      }}
     </HamsterContext.Consumer>
   );
 };
 
 Shelf.propTypes = {
-  props: PropTypes.shape({
-    id: PropTypes.number.isRequired
-  })
+  props: PropTypes.shape({ id: PropTypes.number.isRequired })
 };
 
 export default Shelf;

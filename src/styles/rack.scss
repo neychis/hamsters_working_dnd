@@ -1,5 +1,7 @@
 .rack {
-  width: 150px;
+  $rack-width: 150px;
+
+  width: $rack-width;
   flex-shrink: 0;
 
   > div {
@@ -7,5 +9,13 @@
       border-top: none;
       height: 50px;
       display: flex;
+  }
+
+  .rack__door {
+    background-color: brown;
+    margin-top: 10%;
+    height: 90%;
+    width: $rack-width;
+    flex-shrink: 0;
   }
 }

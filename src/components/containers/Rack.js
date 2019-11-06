@@ -6,9 +6,11 @@ import "../../styles/rack.scss";
 const Rack = () => {
   const _renderShelves = () => {
     const shelves = [];
-    for (let i = 1; i < Constants.numberOfShelves + 1; i++) {
+
+    for (let i = 1; i <= Constants.numberOfShelves; i++) {
       shelves.push(<Shelf key={i} id={i} />);
     }
+
     return shelves;
   };
 

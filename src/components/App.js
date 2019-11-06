@@ -20,17 +20,6 @@ class App extends Component {
     this.changeCurrentHamsterState = this.changeCurrentHamsterState.bind(this);
   }
 
-  changeCurrentHamsterState(shelfId) {
-    const newState = { ...this.state };
-    newState.hamsters = newState.hamsters.map(hamster => {
-      if (hamster.id === newState.currentHamsterId) {
-        hamster.shelfId = shelfId;
-      }
-      return hamster;
-    });
-    this.setState(newState);
-  }
-
   render() {
     return (
       <HamsterContext.Provider
@@ -52,7 +41,17 @@ class App extends Component {
     const newState = { ...this.state };
     newState.currentHamsterId = hamsterId;
     this.setState(newState);
-    console.log(hamsterId);
+  }
+
+  changeCurrentHamsterState(shelfId) {
+    const newState = { ...this.state };
+    newState.hamsters = newState.hamsters.map(hamster => {
+      if (hamster.id === newState.currentHamsterId) {
+        hamster.shelfId = shelfId;
+      }
+      return hamster;
+    });
+    this.setState(newState);
   }
 }
 

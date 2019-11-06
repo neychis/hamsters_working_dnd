@@ -4,6 +4,11 @@ import "../../styles/hamsterField.scss";
 import HamsterContext from "../../HamsterContext";
 
 const HamsterField = () => {
+  const _getHamsters = hamsters =>
+    hamsters
+      .filter(hamster => !hamster.shelfId)
+      .map(hamster => <Hamster key={hamster.id} id={hamster.id} />);
+
   return (
     <HamsterContext.Consumer>
       {({ changeCurrentHamsterState, hamsters }) => (
@@ -12,11 +17,7 @@ const HamsterField = () => {
           onDragOver={e => e.preventDefault()}
           onDrop={e => changeCurrentHamsterState()}
         >
-          {hamsters
-            .filter(hamster => !hamster.shelfId)
-            .map(hamster => (
-              <Hamster key={hamster.id} id={hamster.id} />
-            ))}
+          {_getHamsters(hamsters)}
         </div>
       )}
     </HamsterContext.Consumer>
