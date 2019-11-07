@@ -15,9 +15,6 @@ class App extends Component {
     }
 
     this.state = { hamsters };
-
-    this.setCurrentHamsterId = this.setCurrentHamsterId.bind(this);
-    this.changeCurrentHamsterState = this.changeCurrentHamsterState.bind(this);
   }
 
   render() {
@@ -37,13 +34,13 @@ class App extends Component {
     );
   }
 
-  setCurrentHamsterId(hamsterId) {
+  setCurrentHamsterId = hamsterId => {
     const newState = { ...this.state };
     newState.currentHamsterId = hamsterId;
     this.setState(newState);
-  }
+  };
 
-  changeCurrentHamsterState(shelfId) {
+  changeCurrentHamsterState = shelfId => {
     const newState = { ...this.state };
     newState.hamsters = newState.hamsters.map(hamster => {
       if (hamster.id === newState.currentHamsterId) {
@@ -52,7 +49,7 @@ class App extends Component {
       return hamster;
     });
     this.setState(newState);
-  }
+  };
 }
 
 export default App;

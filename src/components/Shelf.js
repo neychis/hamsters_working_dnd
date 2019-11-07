@@ -14,11 +14,12 @@ const Shelf = props => {
       {({ changeCurrentHamsterState, hamsters }) => {
         return (
           <div
+            className="rack__shelf"
             key={props.id}
             onDragOver={e => e.preventDefault()}
             onDrop={() => changeCurrentHamsterState(props.id)}
           >
-            <div>{_getHamstersMarkup(hamsters)}</div>
+            {_getHamstersMarkup(hamsters)}
             <div className="rack__door" />
           </div>
         );

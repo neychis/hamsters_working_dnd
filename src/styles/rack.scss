@@ -4,18 +4,18 @@
   width: $rack-width;
   flex-shrink: 0;
 
-  > div {
-      border: 4px solid brown;
-      border-top: none;
-      height: 50px;
-      display: flex;
+  > .rack__shelf {
+    border: 4px solid brown;
+    border-top: none;
+    display: flex;
+    height: 50px;
+  
+    > .rack__door {
+      background-color: brown;
+      margin-top: 5px;
+      height: 80%;
+      width: $rack-width;
+    }
   }
 
-  .rack__door {
-    background-color: brown;
-    margin-top: 10%;
-    height: 90%;
-    width: $rack-width;
-    flex-shrink: 0;
-  }
 }
